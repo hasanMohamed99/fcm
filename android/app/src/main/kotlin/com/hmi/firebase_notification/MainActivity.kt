@@ -34,7 +34,19 @@ class MainActivity: FlutterActivity(){
             vibrationPattern = longArrayOf(0, 500, 500)
             enableVibration(true)
         }
+
+        val normalImportanceChannel = NotificationChannel(
+            "normal_importance_channel",
+            "Normal Importance Channel",
+            NotificationManager.IMPORTANCE_DEFAULT,
+        ).apply {
+            description = "This is normal importance channel"
+            setShowBadge(true)
+            vibrationPattern = longArrayOf(0, 500, 500, 500)
+            enableVibration(true)
+        }
+
         val manager = getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannels(listOf(highImportanceChannel, lowImportanceChannel))
+        manager.createNotificationChannels(listOf(highImportanceChannel, normalImportanceChannel, lowImportanceChannel))
     }
 }

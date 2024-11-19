@@ -1,8 +1,8 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:firebase_notification/app.dart';
 import 'package:flutter/material.dart';
+import 'app.dart';
 
-class NotificationHandler {
+abstract class NotificationHandler {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   static void getToken() async {
@@ -23,13 +23,13 @@ class NotificationHandler {
     );
   }
 
-  static Future initializeNotificationHandler() async {
+  static void initializeNotificationHandler() async {
     await FirebaseMessaging.instance.getInitialMessage().then(handleNotification);
     FirebaseMessaging.onMessageOpenedApp.listen(handleNotification);
     FirebaseMessaging.onMessage.listen(handleNotification);
   }
 
-  static Future<void> handleNotification(RemoteMessage? message) async {
+  static void handleNotification(RemoteMessage? message) async {
     if (message == null) return;
     await showDialog(
       context: navigatorKey.currentState!.context,
