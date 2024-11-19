@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486109829435",
+    "project_id": "test-web-5bf09",
+    "storage_bucket": "test-web-5bf09.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486109829435:android:d3f3faae48559d45f33f1e",
+        "android_client_info": {
+          "package_name": "com.hmi.firebase_notification"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486109829435-6vhqq6he8591eud23kbigv8in512suke.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDsNk93o94rNdd4dvnBit0gQRlm33iZ4bo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486109829435-6vhqq6he8591eud23kbigv8in512suke.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
