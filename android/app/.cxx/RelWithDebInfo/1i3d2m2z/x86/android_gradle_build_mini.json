@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/hasanmohamed/fvm/versions/3.29.2/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/hasanmohamed/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Volumes/HDD/FlutterProjects/fcm/android/app/.cxx/RelWithDebInfo/1i3d2m2z/x86",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/hasanmohamed/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Volumes/HDD/FlutterProjects/fcm/android/app/.cxx/RelWithDebInfo/1i3d2m2z/x86",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

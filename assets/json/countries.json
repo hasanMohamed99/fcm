@@ -31,7 +31,7 @@
     { "code": "BR", "name": "Brazil", "phone": "+55", "phoneLength": 11},
     { "code": "BS", "name": "Bahamas", "phone": "+1-242", "phoneLength": 10},
     { "code": "BT", "name": "Bhutan", "phone": "+975", "phoneLength": 7},
-    { "code": "BV", "name": "Bouvet Island", "phone": "+47","phoneLength": 10 },
+    { "code": "BV", "name": "Bouvet Island", "phone": "+47","phoneLength": 10},
     { "code": "BW", "name": "Botswana", "phone": "+267", "phoneLength": 7},
     { "code": "BY", "name": "Belarus", "phone": "+375", "phoneLength": 9},
     { "code": "BZ", "name": "Belize", "phone": "+501", "phoneLength": 7},

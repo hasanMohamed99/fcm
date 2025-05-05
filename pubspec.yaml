@@ -9,11 +9,14 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
 
   cupertino_icons: ^1.0.8
-  firebase_core: ^3.8.0
-  firebase_messaging: ^15.1.5
-  google_fonts: ^6.2.1
+  firebase_core: ^3.13.0
+  firebase_messaging: ^15.2.5
+  flutter_libphonenumber: ^2.5.1
+  timeago: ^3.7.0
 
 dev_dependencies:
   flutter_test:
@@ -27,3 +30,5 @@ flutter:
   assets:
     - assets/
     - assets/json/
+flutter_intl:
+  enabled: true

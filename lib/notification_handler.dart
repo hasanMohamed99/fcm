@@ -1,18 +1,17 @@
+import 'package:firebase_notification/helpers/native_functions.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
-import 'app.dart';
 
 abstract class NotificationHandler {
   static FirebaseMessaging messaging = FirebaseMessaging.instance;
 
   static void getToken() async {
-    await messaging.requestPermission(
-      alert: true,
-      badge: true,
-      sound: true,
+    await messaging
+        .requestPermission(
       announcement: true,
       criticalAlert: true,
-    ).then(
+    )
+        .then(
       (value) async {
         await messaging.getToken().then(
           (value) {
@@ -31,20 +30,27 @@ abstract class NotificationHandler {
 
   static void handleNotification(RemoteMessage? message) async {
     if (message == null) return;
-    await showDialog(
-      context: navigatorKey.currentState!.context,
-      builder: (_) => AlertDialog(
-        title: Text('Title: ${message.notification?.title}'),
-        content: Text('Body: ${message.notification?.body}'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(navigatorKey.currentState!.context).pop();
-            },
-            child: const Text('Close'),
-          ),
-        ],
-      ),
+    NativeFunctions.showNotification(
+      message.data,
     );
+    // await showDialog(
+    //   context: navigatorKey.currentState!.context,
+    //   builder: (_) => AlertDialog(
+    //     title: Text(
+    //         'Title: ${message.data['title']}'),
+    //     content: Text(
+    //         'Text: ${message.data['text']}'),
+    //     actions: [
+    //       TextButton(
+    //         onPressed: () {
+    //           Navigator.of(navigatorKey
+    //                   .currentState!.context)
+    //               .pop();
+    //         },
+    //         child: const Text('Close'),
+    //       ),
+    //     ],
+    //   ),
+    // );
   }
 }
