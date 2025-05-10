@@ -1,9 +1,12 @@
 package com.hmi.firebase_notification
 import android.app.NotificationManager
+import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import io.flutter.embedding.android.FlutterFragmentActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import java.io.Serializable
 
 class MainActivity : FlutterFragmentActivity() {
 
@@ -24,9 +27,10 @@ class MainActivity : FlutterFragmentActivity() {
                 "showNotification" -> {
                     if (call.arguments != null) {
                         val args = call.arguments as Map<*, *>
-                        showNotification(
-                            args
-                        )
+//                        showNotification(
+//                            args
+//                        )
+                        showCallNotification(args)
                         result.success(null)
                     }
                 }
@@ -38,6 +42,13 @@ class MainActivity : FlutterFragmentActivity() {
         }
     }
 
+    private fun showCallNotification(args: Map<*, *>) {
+        val serializableMap = args as Serializable
+        val serviceIntent = Intent(this, CallNotificationService::class.java).apply {
+            putExtra("data", serializableMap)
+        }
+        this.startForegroundService(serviceIntent)
+    }
     private fun showNotification(args: Map<*, *>) {
         val handler = NotificationHandler(applicationContext)
         handler.showNotification(args)

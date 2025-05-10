@@ -38,12 +38,12 @@ class NotificationHandler(
             PendingIntent.FLAG_IMMUTABLE
         )
         val icon = IconCompat.createFromIcon(context, Icon.createWithResource(context, R.drawable.person))
-        val person = Person.Builder().setName(sender).setImportant(true).setIcon(icon).build()
-        val messageNotificationStyle = NotificationCompat.MessagingStyle(person).addMessage(
-            text,
-            System.currentTimeMillis(),
-            person
-        )
+//        val person = Person.Builder().setName(sender).setImportant(true).setIcon(icon).build()
+//        val messageNotificationStyle = NotificationCompat.MessagingStyle(person).addMessage(
+//            text,
+//            System.currentTimeMillis(),
+//            person
+//        )
 
         val declineIntent = PendingIntent.getActivity(
             context,
@@ -57,8 +57,15 @@ class NotificationHandler(
             activityIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
-        val callNotificationStyle =
-            NotificationCompat.CallStyle.forIncomingCall(person, declineIntent, answerIntent)
+
+        val caller = Person.Builder()
+            // Caller icon
+            .setIcon(icon)
+            // Caller name
+            .setName(sender)
+            .setImportant(true)
+            .build()
+        val notificationStyle = NotificationCompat.CallStyle.forIncomingCall(caller, declineIntent, answerIntent)
 
         CoroutineScope(Dispatchers.Main).launch {
             val bitmap = withContext(Dispatchers.IO) {
@@ -68,11 +75,12 @@ class NotificationHandler(
                 .setForegroundServiceBehavior(NotificationCompat.FOREGROUND_SERVICE_IMMEDIATE)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(activityPendingIntent)
+                .setFullScreenIntent(activityPendingIntent,true)
                 .setSmallIcon(R.drawable.ic_notification)
                 .setContentTitle(title)
                 .setContentText(text)
                 .setStyle(
-                    callNotificationStyle
+                    notificationStyle
                 )
                 .setSound(null)
                 .setOngoing(true)
